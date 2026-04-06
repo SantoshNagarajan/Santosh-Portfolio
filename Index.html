@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santosh Nagarajan — Senior Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;cursor:none;overflow-x:hidden;transition:background .25s,color .25s;}
+a{color:inherit;text-decoration:none;cursor:none;}
+
+[data-theme="light"]{--bg:#fff;--border:#f0f0f0;--border2:#e8e8e8;--text:#111;--text2:#555;--text3:#999;--text4:#ccc;--sb-bio:#444;--tgl:#f0f0f0;--tgl-b:#e8e8e8;--tgl-k:#aaa;--about-bg:#f5f5f0;}
+[data-theme="dark"]{--bg:#0f0f0f;--border:#1e1e1e;--border2:#2a2a2a;--text:#f0ede8;--text2:#777;--text3:#444;--text4:#2a2a2a;--sb-bio:#666;--tgl:#1e1e1e;--tgl-b:#2a2a2a;--tgl-k:#555;--about-bg:#141414;}
+html,body{background:var(--bg);color:var(--text);}
+
+/* CURSOR */
+.cdot{position:fixed;z-index:9999;width:8px;height:8px;background:#F97316;pointer-events:none;transform:translate(-50%,-50%);animation:morph 4.5s cubic-bezier(.4,0,.2,1) infinite;}
+@keyframes morph{0%,15%{border-radius:50%;width:8px;height:8px;clip-path:none;background:#F97316;}33%,48%{border-radius:2px;width:8px;height:8px;clip-path:none;background:#FB923C;}66%,81%{border-radius:0;width:9px;height:9px;clip-path:polygon(50% 0%,0% 100%,100% 100%);background:#FDBA74;}100%{border-radius:50%;width:8px;height:8px;clip-path:none;background:#F97316;}}
+.cring{position:fixed;z-index:9998;width:32px;height:32px;border-radius:50%;border:1px solid rgba(128,128,128,0.18);pointer-events:none;transform:translate(-50%,-50%);transition:width .3s cubic-bezier(.16,1,.3,1),height .3s cubic-bezier(.16,1,.3,1);}
+.cring.big{width:46px;height:46px;}
+
+/* LAYOUT */
+.wrap{display:grid;grid-template-columns:280px 1fr;min-height:100vh;}
+
+/* SIDEBAR */
+.sb{padding:36px 28px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;border-right:1px solid var(--border);overflow-y:auto;transition:border-color .25s;}
+.sb-bio{font-size:14px;font-weight:300;line-height:1.75;margin-bottom:20px;color:var(--sb-bio);transition:color .25s;}
+.sb-bio a{color:var(--text);border-bottom:1px solid var(--border2);padding-bottom:1px;transition:border-color .15s,color .25s;}
+.sb-bio a:hover{border-bottom-color:var(--text);}
+.sb-div{height:1px;background:var(--border);margin:20px 0;transition:background .25s;}
+.sb-sec{font-size:13px;color:var(--text3);margin-bottom:8px;transition:color .25s;}
+.sb-links{display:flex;flex-direction:column;gap:5px;margin-bottom:20px;}
+.sb-link{font-size:14px;font-weight:300;color:var(--text3);transition:color .15s;}
+.sb-link:hover{color:var(--text);}
+.sb-foot{margin-top:auto;padding-top:20px;display:flex;align-items:center;justify-content:space-between;}
+.sb-loc{font-size:13px;color:var(--text4);transition:color .25s;}
+.tgl{width:40px;height:22px;border-radius:100px;padding:3px;display:flex;align-items:center;cursor:none;border:1px solid var(--tgl-b);background:var(--tgl);transition:background .25s,border-color .25s;}
+.tgl-k{width:14px;height:14px;border-radius:50%;background:var(--tgl-k);transition:transform .3s cubic-bezier(.16,1,.3,1),background .25s;}
+[data-theme="dark"] .tgl-k{transform:translateX(18px);}
+
+/* MAIN */
+.mn{padding:32px;background:var(--bg);transition:background .25s;overflow-y:auto;}
+.mn-head{margin-bottom:24px;}
+.mn-count{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text4);margin-bottom:2px;}
+.mn-sub{font-size:13px;font-weight:300;color:var(--text4);}
+
+/* BENTO GRID */
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* BASE CARD */
+.bc{border-radius:20px;overflow:hidden;position:relative;cursor:none;transition:transform .25s cubic-bezier(.16,1,.3,1);}
+.bc:hover{transform:translateY(-3px);}
+.bc-wide{grid-column:span 2;}
+.bc-tall{grid-row:span 2;}
+
+/* Card layout */
+.bc-inner{padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;position:relative;z-index:2;}
+.bc-wide .bc-inner{min-height:200px;}
+
+/* Text */
+.bc-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-bottom:8px;}
+.bc-title{font-size:28px;font-weight:600;line-height:1.0;letter-spacing:-.025em;margin-bottom:10px;}
+.bc-desc{font-size:14px;font-weight:300;line-height:1.6;opacity:.7;max-width:300px;}
+.bc-tags{display:flex;gap:6px;margin-top:16px;flex-wrap:wrap;}
+.bc-tag{font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:100px;}
+.bc-tag.light{background:rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);}
+.bc-tag.dark{background:rgba(0,0,0,0.1);color:rgba(0,0,0,0.6);}
+
+/* Arrow */
+.bc-arrow{position:absolute;top:20px;right:20px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.7) translateY(4px);transition:opacity .2s,transform .2s;z-index:3;}
+.bc:hover .bc-arrow{opacity:1;transform:scale(1) translateY(0);}
+.bc-arrow.light-arr{background:rgba(255,255,255,0.25);}
+.bc-arrow.dark-arr{background:rgba(0,0,0,0.12);}
+
+/* Floating UI */
+.bc-ui{position:absolute;z-index:1;pointer-events:none;}
+
+/* VERIZON — dark navy, full width */
+.bc-vz{background:#1a1f3a;color:#fff;}
+
+/* Phone mockup */
+.phone{width:120px;border-radius:18px;border:4px solid rgba(255,255,255,0.12);background:#0d0d18;overflow:hidden;}
+.ph-bar{background:#0a0a12;padding:7px 10px;display:flex;gap:4px;}
+.ph-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.1);}
+.ph-screen{padding:10px;background:#12121e;}
+.ph-amount{font-size:20px;font-weight:600;color:#fff;letter-spacing:-.03em;margin-bottom:8px;font-family:'Inter',sans-serif;}
+.ph-row{height:26px;border-radius:5px;margin-bottom:4px;display:flex;align-items:center;padding:0 7px;gap:5px;}
+.ph-line{height:6px;border-radius:3px;}
+.ph-row.r1{background:rgba(255,255,255,0.05);}
+.ph-row.r2{background:rgba(99,102,241,0.2);}
+.ph-row.r3{background:rgba(255,255,255,0.05);}
+.ph-btn{height:26px;border-radius:5px;background:#6366f1;margin-top:6px;display:flex;align-items:center;justify-content:center;}
+.ph-btn-t{font-size:8px;font-weight:600;color:#fff;letter-spacing:.06em;font-family:'Inter',sans-serif;}
+
+/* AARISTA — amber */
+.bc-aa{background:#f5a623;color:#1a0f00;}
+
+/* Calendar */
+.mini-cal{background:#fff;border-radius:10px;padding:10px;width:160px;box-shadow:0 6px 20px rgba(0,0,0,0.15);}
+.mc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;}
+.mc-t{font-size:9px;font-weight:600;color:#111;font-family:'Inter',sans-serif;}
+.mc-badge{font-size:8px;background:#fee2e2;color:#dc2626;padding:1px 5px;border-radius:3px;font-family:'Inter',sans-serif;}
+.mc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;}
+.mc-day{font-size:7px;color:#999;text-align:center;padding-bottom:2px;font-family:'Inter',sans-serif;}
+.mc-cell{height:30px;border-radius:4px;background:#f5f5f5;padding:2px;}
+.mc-cell.today{background:#fff3e0;border:1px solid #f5a623;}
+.mc-apt{height:6px;border-radius:2px;margin-bottom:1px;}
+.mc-apt.r{background:#fca5a5;}
+.mc-apt.b{background:#93c5fd;}
+.mc-apt.o{background:#fbbf24;}
+
+/* PUBLICIS — deep purple */
+.bc-ps{background:#3730a3;color:#fff;}
+
+/* Design system tokens */
+.ds{background:rgba(255,255,255,0.08);border-radius:8px;padding:10px;width:150px;}
+.ds-swatches{display:flex;gap:4px;margin-bottom:8px;}
+.ds-sw{width:18px;height:18px;border-radius:3px;}
+.ds-row{height:18px;background:rgba(255,255,255,0.1);border-radius:4px;margin-bottom:3px;display:flex;align-items:center;padding:0 6px;}
+.ds-row-t{font-size:7px;color:rgba(255,255,255,0.4);font-family:'Inter',sans-serif;}
+
+/* OTHER — soft green */
+.bc-other{background:#dcfce7;color:#14532d;}
+[data-theme="dark"] .bc-other{background:#052e16;color:#86efac;}
+
+.other-items{display:flex;flex-direction:column;gap:7px;margin-top:12px;}
+.other-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:300;}
+.other-item::before{content:'';width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.5;flex-shrink:0;}
+
+/* ABOUT STRIP */
+.about{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-radius:12px;background:var(--about-bg);margin-top:10px;transition:background .25s;}
+.about-l{display:flex;align-items:center;gap:12px;}
+.about-av{width:36px;height:36px;border-radius:50%;background:var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--text3);}
+.about-name{font-size:13px;font-weight:500;color:var(--text);}
+.about-sub{font-size:12px;font-weight:300;color:var(--text3);}
+.about-cta{font-size:12px;color:var(--text);display:flex;align-items:center;gap:4px;border-bottom:1px solid var(--border2);padding-bottom:1px;transition:border-color .15s;white-space:nowrap;}
+.about-cta:hover{border-bottom-color:var(--text);}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.bc-title{font-size:22px;}}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;}.sb{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border);}.cdot,.cring{display:none;}body,a{cursor:auto;}.bento{grid-template-columns:1fr;}.bc-wide,.bc-tall{grid-column:span 1;grid-row:span 1;}}
+</style>
+</head>
+<body>
+
+<div class="cdot" id="cd"></div>
+<div class="cring" id="cr"></div>
+
+<div class="wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sb">
+    <p class="sb-bio">
+      Santosh Nagarajan is a senior product designer with 10+ years in enterprise and healthcare. Interested in AI products, complex workflows, and experiences that feel fast and obvious.<br><br>
+      Currently designing at <a href="#">@Aarista</a>.<br>
+      Previously worked with <a href="#">@Verizon</a>, <a href="#">@Publicis Sapient</a>, and <a href="#">@Tata Elxsi</a>.
+    </p>
+    <div class="sb-div"></div>
+    <div class="sb-sec">Other Spaces</div>
+    <div class="sb-links">
+      <a href="about.html" class="sb-link hoverable">About Me</a>
+      <a href="assets/Santosh_Resume.pdf" class="sb-link hoverable">Resume</a>
+    </div>
+    <div class="sb-sec">Places to find me</div>
+    <div class="sb-links">
+      <a href="https://linkedin.com/in/santosh27" class="sb-link hoverable">LinkedIn</a>
+      <a href="mailto:santosh@santoshdesign.in" class="sb-link hoverable">Email</a>
+    </div>
+    <div class="sb-foot">
+      <span class="sb-loc">Vancouver, BC</span>
+      <div class="tgl hoverable" id="tgl"><div class="tgl-k"></div></div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="mn">
+    <div class="mn-head">
+      <div class="mn-count">Selected work · 2016–2025</div>
+      <div class="mn-sub">Enterprise · Healthcare · AI products</div>
+    </div>
+
+    <div class="bento">
+
+      <!-- VERIZON — wide -->
+      <a href="verizon.html" class="bc bc-vz bc-wide hoverable">
+        <div class="bc-inner">
+          <div>
+            <div class="bc-label">Verizon · 2020–2025 · Payments</div>
+            <div class="bc-title">Prepaid<br>Instant Pay</div>
+            <div class="bc-desc">Redesigning a high-stakes payment flow for 10M+ prepaid customers who top up when their phone is already dead.</div>
+            <div class="bc-tags">
+              <span class="bc-tag light">Shipped 2024</span>
+              <span class="bc-tag light">10M+ users</span>
+              <span class="bc-tag light">25% fewer errors</span>
+            </div>
+          </div>
+        </div>
+        <!-- Phone floating right -->
+        <div class="bc-ui" style="right:48px;top:50%;transform:translateY(-50%);">
+          <div class="phone">
+            <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+            <div class="ph-screen">
+              <div style="font-size:8px;color:rgba(255,255,255,.25);margin-bottom:5px;font-family:'Inter',sans-serif;letter-spacing:.05em;">INSTANT PAY</div>
+              <div class="ph-amount">$45.00</div>
+              <div class="ph-row r1"><div class="ph-line" style="width:55%;background:rgba(255,255,255,.1);"></div></div>
+              <div class="ph-row r2"><div class="ph-line" style="width:65%;background:rgba(99,102,241,.7);"></div></div>
+              <div class="ph-row r3"><div class="ph-line" style="width:40%;background:rgba(255,255,255,.08);"></div></div>
+              <div class="ph-btn"><div class="ph-btn-t">CONTINUE</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="bc-arrow light-arr">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+
+      <!-- AARISTA — tall left -->
+      <a href="aarista.html" class="bc bc-aa bc-tall hoverable">
+        <div class="bc-inner" style="min-height:320px;">
+          <div>
+            <div class="bc-label">Aarista · 2025 · Healthcare AI</div>
+            <div class="bc-title">Physician<br>Rounding<br>Platform</div>
+            <div class="bc-desc">Mission-critical scheduling for physicians across skilled nursing facilities.</div>
+            <div class="bc-tags">
+              <span class="bc-tag dark">In production</span>
+              <span class="bc-tag dark">B2B Healthcare</span>
+            </div>
+          </div>
+        </div>
+        <!-- Calendar floating bottom right -->
+        <div class="bc-ui" style="right:16px;bottom:28px;">
+          <div class="mini-cal">
+            <div class="mc-head">
+              <span class="mc-t">May 21–27</span>
+              <span class="mc-badge">2 alerts</span>
+            </div>
+            <div class="mc-grid">
+              <div class="mc-day">S</div><div class="mc-day">M</div><div class="mc-day">T</div><div class="mc-day">W</div><div class="mc-day">T</div>
+              <div class="mc-cell"><div class="mc-apt r"></div><div class="mc-apt b"></div></div>
+              <div class="mc-cell today"><div class="mc-apt r"></div><div class="mc-apt o"></div><div class="mc-apt b"></div></div>
+              <div class="mc-cell"><div class="mc-apt b"></div></div>
+              <div class="mc-cell"></div>
+              <div class="mc-cell"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bc-arrow dark-arr">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="#1a0f00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+
+      <!-- PUBLICIS — right top -->
+      <a href="publicis.html" class="bc bc-ps hoverable">
+        <div class="bc-inner">
+          <div>
+            <div class="bc-label">Publicis Sapient · 2016–2020</div>
+            <div class="bc-title">Enterprise<br>Design<br>Systems</div>
+            <div class="bc-desc">Financial services and retail clients globally.</div>
+            <div class="bc-tags">
+              <span class="bc-tag light">4 Years</span>
+              <span class="bc-tag light">NDA</span>
+            </div>
+          </div>
+        </div>
+        <!-- DS tokens -->
+        <div class="bc-ui" style="right:20px;bottom:28px;">
+          <div class="ds">
+            <div class="ds-swatches">
+              <div class="ds-sw" style="background:#6366f1;"></div>
+              <div class="ds-sw" style="background:#8b5cf6;"></div>
+              <div class="ds-sw" style="background:#a78bfa;"></div>
+              <div class="ds-sw" style="background:#c4b5fd;"></div>
+            </div>
+            <div class="ds-row"><div class="ds-row-t">Button / Primary</div></div>
+            <div class="ds-row"><div class="ds-row-t">Input / Default</div></div>
+            <div class="ds-row"><div class="ds-row-t">Card / Surface</div></div>
+          </div>
+        </div>
+        <div class="bc-arrow light-arr">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+
+      <!-- OTHER — right bottom -->
+      <a href="#" class="bc bc-other hoverable">
+        <div class="bc-inner">
+          <div>
+            <div class="bc-label">Other work</div>
+            <div class="bc-title" style="font-size:22px;">More<br>Projects</div>
+            <div class="other-items">
+              <div class="other-item">Tata Elxsi · Automotive UX · 2014–2016</div>
+              <div class="other-item">Design Sprints · Speculative · 2023</div>
+              <div class="other-item">Contra · Freelance</div>
+            </div>
+          </div>
+        </div>
+        <div class="bc-arrow dark-arr">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="#14532d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- ABOUT -->
+    <div class="about">
+      <div class="about-l">
+        <div class="about-av">SN</div>
+        <div>
+          <div class="about-name">Masters in Information Design · NID India</div>
+          <div class="about-sub">10+ years enterprise · Vancouver BC · Canadian PR</div>
+        </div>
+      </div>
+      <a href="about.html" class="about-cta hoverable">
+        More about me
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 10L10 1M10 1H3M10 1v7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const cd=document.getElementById('cd'),cr=document.getElementById('cr');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function loop(){cd.style.left=mx+'px';cd.style.top=my+'px';rx+=(mx-rx)*0.085;ry+=(my-ry)*0.085;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('.hoverable').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cr.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cr.classList.remove('big'));
+});
+const html=document.documentElement,tgl=document.getElementById('tgl');
+let dark=localStorage.getItem('sn-theme')==='dark'||(window.matchMedia('(prefers-color-scheme: dark)').matches&&!localStorage.getItem('sn-theme'));
+function apply(){html.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('sn-theme',dark?'dark':'light');}
+apply();
+tgl.addEventListener('click',()=>{dark=!dark;apply();});
+</script>
+</body>
+</html>
